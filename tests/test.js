@@ -13,28 +13,66 @@ describe('cal', () => {
     });
   });
 
-  describe("Zellar's congruence", () => {
-    // const zellars = require('../zellars.js');
+  describe("Zeller's congruence", () => {
+    const zellers = require('../zellers.js');
 
     describe('.modifiedMonth', () => {
       it('return 13 for January', () => {
-        const mod = zellars.modifiedMonth(2012, 01);
-
-        expect(mod).to.equal(13);
+        expect(zellers.modifiedMonth(1)).to.equal(13);
       });
-      // 2012, 2 === 14
-      // 2012, 3 === 3
-    });
-    // .modified Year
-    // 2000, 1 === 1999
-    // 2012, 2 === 2011
-    // 2013, 3 === 2013
 
-    // .calculate
-    // 2014, 3, 2, === 1
-    // 2012, 1, 1 === 1
-    // 2013, 1, 12 === 5
-    // 1799, 2, 1 === 6
-    // 200, 11, 01 === 4
+      it('return 14 for February', () => {
+        expect(zellers.modifiedMonth(2)).to.equal(14);
+
+
+      it('return 3 for March', () => {
+        expect(zellers.modifiedMonth(3)).to.equal(3);
+      });
+    });
+
+    describe('.modifiedYear', () => {
+      it('returns 2014 for Jan 2015', () => {
+        expect(zellers.modifiedYear(2015, 1)).to.equal(2014);
+      });
+
+      it('returns 2015 for Feb 2016', () => {
+        expect(zellers.modifiedYear(2016, 2)).to.equal(2015);
+      });
+
+      it('returns 2017 for March 2017', () => {
+        expect(zellers.modifiedYear(2017, 3)).to.equal(2017);
+      });
+    });
+
+    describe('.getDay', () => {
+      it('returns 2 (Monday) for March 1, 2016', () => {
+        expect(zellers.getDay(2016, 3, 1)).to.equal(2);
+      });
+
+      it('returns 3 (Tuesday) for March 1, 2000', () => {
+        expect(zellers.getDay(2000, 3, 1)).to.equal(3);
+      });
+
+      it('returns 1 (Sunday) for March 1, 2100', () => {
+        expect(zellers.getDay(2100, 3, 1)).to.equal(1);
+      });
+
+      it('returns 0 (Saturday) for March 2, 2200', () => {
+        expect(zellers.getDay(2200, 3, 2)).to.equal(0);
+      });
+
+      it('returns 4 (Wednesday) for March 1, 2300', () => {
+        expect(zellers.getDay(2300, 3, 1)).to.equal(4);
+      });
+    });
+    describe('.center', () => {
+      it('should handle January', () => {
+        expect(center('January 2016')).to.equal('    January 2016');
+      });
+      it('should handle February', () => {
+        expect(center('February 2016')).to.equal('    February 2016');
+      });
+    });
   });
+ });
 });
