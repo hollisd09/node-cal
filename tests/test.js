@@ -45,34 +45,34 @@ describe('cal', () => {
     });
 
     describe('.getDay', () => {
-      it('returns 2 (Monday) for March 1, 2016', () => {
+      it('returns 2 (Tuesday) for March 1, 2016', () => {
         expect(zellers.getDay(2016, 3, 1)).to.equal(2);
       });
 
-      it('returns 3 (Tuesday) for March 1, 2000', () => {
+      it('returns 3 (Wednesday) for March 1, 2000', () => {
         expect(zellers.getDay(2000, 3, 1)).to.equal(3);
       });
 
-      it('returns 1 (Sunday) for March 1, 2100', () => {
+      it('returns 1 (Monday) for March 1, 2100', () => {
         expect(zellers.getDay(2100, 3, 1)).to.equal(1);
       });
 
-      it('returns 0 (Saturday) for March 2, 2200', () => {
+      it('returns 0 (Sunday) for March 2, 2200', () => {
         expect(zellers.getDay(2200, 3, 2)).to.equal(0);
       });
 
-      it('returns 4 (Wednesday) for March 1, 2300', () => {
+      it('returns 4 (Thursday) for March 1, 2300', () => {
         expect(zellers.getDay(2300, 3, 1)).to.equal(4);
       });
     });
-    describe('.center', () => {
-      it('should handle January', () => {
-        expect(center('January 2016')).to.equal('    January 2016');
-      });
-      it('should handle February', () => {
-        expect(center('February 2016')).to.equal('    February 2016');
-      });
-    });
+    //describe('.center', () => {
+      //it('should handle January', () => {
+        //expect(center('January 2016')).to.equal('    January 2016');
+      //});
+      //it('should handle February', () => {
+        //expect(center('February 2016')).to.equal('    February 2016');
+      //});
+    //});
   });
  });
 });
